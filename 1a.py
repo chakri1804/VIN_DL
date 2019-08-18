@@ -24,7 +24,7 @@ def NCC(x,y):
 		for j in range(fin_h):
 			x = normalise(x)
 			reg = normalise(y[i:i+w,j:j+h])
-			NCC_out[i,j] = np.sum(x*reg)
+			NCC_out[i,j] = np.mean(x*reg)
 
 	return NCC_out
 
@@ -44,7 +44,9 @@ out = NCC(mask, img)
 
 # print(out)
 ind = np.unravel_index(np.argmax(out, axis=None), out.shape)
+print("The template is most similar to image starting at the pixel :")
 print(ind)
+print("Cross Correlation value :")
 print(out[ind])
 plt.imshow(out, cmap='gray')
 plt.show()

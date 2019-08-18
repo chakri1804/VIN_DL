@@ -23,8 +23,7 @@ def NCC(x,y):
 		for j in range(fin_h):
 			x = normalise(x)
 			reg = normalise(y[i:i+w,j:j+h])
-			NCC_out[i,j] = np.sum(x*reg)
-
+			NCC_out[i,j] = np.mean(x*reg)
 	return NCC_out
 
 #Importing image data. Note that template has been cropped from hollow.jpeg at pixel index (122,61)
