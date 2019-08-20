@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 from scipy.signal import convolve2d
+import time
 
 # Assuming x to be the input image and y to be kernel
 # Since it is convolution, we'd like to pad the image with zeros
@@ -33,15 +34,20 @@ Lapl = np.array([[0,-1,0],[-1,4,-1],[0,-1,0]])
 img = img.astype(float)
 Lapl = Lapl.astype(float)
 
+start_time = time.time()
 outL = Conv2D(img, Lapl)
+print("Numpy Implementation time taken :", time.time() - start_time)
 
 plt.imshow(outL, cmap='gray')
+plt.savefig('3a_2.png')
 plt.title('Laplacian edge detecting filter')
 plt.show()
 
 ##### Scipy Implementation
-
+start_time = time.time()
 outX = convolve2d(img, Lapl, 'same')
+print("SCIPY Implementation time taken :", time.time() - start_time)
 plt.imshow(outX, cmap='gray')
+plt.savefig('3a_SCIPY_2.png')
 plt.title('Laplacian edge detecting filter - SCIPY')
 plt.show()
